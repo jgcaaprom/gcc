@@ -7063,6 +7063,9 @@ finish_struct_1 (tree t)
 	  TYPE_TRANSPARENT_AGGR (t) = 0;
 	}
     }
+
+  if (abi_version_at_least (10))
+    TYPE_EMPTY_RECORD (t) = is_really_empty_class (t);
 }
 
 /* Insert FIELDS into T for the sorted case if the FIELDS count is
