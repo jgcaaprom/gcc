@@ -2795,8 +2795,8 @@ microblaze_expand_prologue (void)
 	  passed_mode = Pmode;
 	}
 
-      entry_parm = targetm.calls.function_arg (args_so_far, passed_mode,
-					       passed_type, true);
+      entry_parm = function_arg (args_so_far, passed_mode, passed_type,
+				 true);
 
       if (entry_parm)
 	{
@@ -2816,8 +2816,7 @@ microblaze_expand_prologue (void)
 	  break;
 	}
 
-      targetm.calls.function_arg_advance (args_so_far, passed_mode,
-					  passed_type, true);
+      function_arg_advance (args_so_far, passed_mode, passed_type, true);
 
       next_arg = TREE_CHAIN (cur_arg);
       if (next_arg == 0)
@@ -2831,8 +2830,8 @@ microblaze_expand_prologue (void)
 
   /* Split parallel insn into a sequence of insns.  */
 
-  next_arg_reg = targetm.calls.function_arg (args_so_far, VOIDmode,
-					     void_type_node, true);
+  next_arg_reg = function_arg (args_so_far, VOIDmode, void_type_node,
+			       true);
   if (next_arg_reg != 0 && GET_CODE (next_arg_reg) == PARALLEL)
     {
       rtvec adjust = XVEC (next_arg_reg, 0);
